@@ -1,0 +1,22 @@
+{
+  "name": "apip",
+  "version": "1.0.0",
+  "description": "api project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaummm777/APIprject.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "ME",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jaummm777/APIprject/issues"
+  },
+  "homepage": "https://github.com/Jaummm777/APIprject#readme"
+}
