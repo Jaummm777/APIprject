@@ -4,19 +4,15 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
-// Substitua pelo seu token de autenticação
-const TINY_API_TOKEN = 'b1cbdd9d331fb3fddff654944bdc4de7e3adb1cefcae9f2bec9546dde73ce1a9';
-const BASE_URL_PEDIDOS = 'https://api.tiny.com.br/api2/pedidos.obter.php'; // Verifique este endpoint
+const TINY_API_TOKEN = 'private_token'; //token privado para segurança do cliente.
+const BASE_URL_PEDIDOS = 'https://api.tiny.com.br/api2/pedidos.obter.php';
 
-// Middleware para lidar com JSON
 app.use(express.json());
 
-// Rota para a URL raiz
 app.get('/', (req, res) => {
   res.send('Bem-vindo à API! Use /pedidos para listar todos os pedidos.');
 });
 
-// Rota para listar todos os pedidos
 app.get('/pedidos', async (req, res) => {
   try {
     const response = await axios.get(BASE_URL_PEDIDOS, {
@@ -29,7 +25,7 @@ app.get('/pedidos', async (req, res) => {
     const data = response.data;
 
     if (data.retorno && data.retorno.status === 'OK') {
-      res.json(data.retorno.pedidos); // Ajuste conforme a estrutura real do retorno
+      res.json(data.retorno.pedidos);
     } else {
       res.status(400).json({
         error: data.retorno ? data.retorno.erros.map((erro) => erro.erro).join(', ') : 'Erro desconhecido',
@@ -46,7 +42,6 @@ app.get('/pedidos', async (req, res) => {
   }
 });
 
-// Inicia o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
